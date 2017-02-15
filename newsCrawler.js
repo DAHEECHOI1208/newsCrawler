@@ -13,16 +13,19 @@ var result = [];
 
 var url = new url_parse(START_URL);
 var baseUrl = url.protocol + "//" + url.hostname;
-console.log("BaseUrl: " + baseUrl);
 
 var main = (function(){
+    if (process.argv.length != 4) {
+      console.log("WARNING: Please specify a keyword and sitesNum");
+      process.exit(-1);
+    }
     process.argv.forEach(function(val,index,array) {
       switch(index) {
         case 2:
           SEARCH_WORD = val;
           break;
         case 3:
-          MAX_SITES_TO_VISIT = parseInt(20);
+          MAX_SITES_TO_VISIT = parseInt(val);
           break;
         default:
           break;
@@ -81,7 +84,6 @@ function visitSite(url) {
   request({
     uri: url
   }, (err, response, body) => {
-
     if(response.statusCode !== 200) {
       // console.log("Fail to request, status: " + response.statusCode);
       numSucceedToVisit--;
