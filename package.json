@@ -1,0 +1,10 @@
+{
+  "name": "google-crawler",
+  "version": "0.0.1",
+  "dependencies": {
+    "request": "~2.69.0",
+    "cheerio": "~0.20.0",
+    "url-parse": "~1.1.7"
+  },
+  "description": "google-crawler"
+}
